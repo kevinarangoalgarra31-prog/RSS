@@ -1,0 +1,15 @@
+services:
+  rss-lab:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Al publicar con un túnel o dominio, descomenta y cambia esta URL.
+      # PUBLIC_BASE_URL: https://rss.example.test
+      DATABASE: /app/data/events.db
+    volumes:
+      - rss_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  rss_data:
